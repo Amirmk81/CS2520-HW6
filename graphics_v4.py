@@ -13,12 +13,14 @@ refresh_rate = 60
 lights_on = True
 day = True
 
+#adding the position of stars
 stars = []
 for n in range(200):
     x = random.randrange(0, 800)
     y = random.randrange(0, 200)
     r = random.randrange(1, 2)
     stars.append([x, y, r, r])
+#adding the position of clouds
 
 clouds = []
 for i in range(20):

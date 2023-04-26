@@ -43,6 +43,8 @@ SEE_THROUGH.fill((124, 118, 135))
 
 #object prefabs
 def drawGoal():
+    '''The function drawGoal() is a helper function that draws a football goalpost on the Pygame screen. 
+    The goalpost consists of a goalbox, a net, and a net part 2. The function has no parameters.'''
 
     s = 1; #scale
 
@@ -136,6 +138,8 @@ def drawGoal():
 
 
 def drawScoreBoard():
+    '''This function draws a score board on the screen. The score board consists of a rectangular shape with a gray pole on its left side.
+      The function takes no arguments, and it uses the global screen variable, which should be defined before calling this function.'''
 
     s = 1; #scale
 
@@ -155,11 +159,16 @@ def drawScoreBoard():
 
 light_color = RED
 def SetLightColor(c):
+    '''This function sets the color of the lights to the given color c. The parameter c should be a valid pygame color.
+      This function uses the global light_color variable to store the current color of the lights.'''
     global light_color
     light_color = c
 
 def drawLights(x, y, s):
-
+    '''This function draws five ellipses on top of a horizontal line, to represent the lights on a soccer field.
+      The lights are positioned over a gray pole. The function takes three parameters: x and y are the coordinates
+        where the lights will be drawn, and s is the scaling factor for the size of the lights. This function uses
+          the global screen variable, which should be defined before calling this function.'''
     x = x-110
 
     y = y-20
@@ -185,6 +194,9 @@ def drawLights(x, y, s):
 
 
 def drawFlagR(x,y,s):
+    '''This function draws a flag at the bottom-right corner of the screen. The flag consists of a red triangle over a yellow pole.
+      The function takes three parameters: x and y are the coordinates where the flag will be drawn, and s is the scaling factor for
+        the size of the flag. This function uses the global screen variable, which should be defined before calling this function.'''
     x = x-125
     y = y-190
     #corner flag right
@@ -192,27 +204,39 @@ def drawFlagR(x,y,s):
     pygame.draw.polygon(screen, RED, [[132+x, 190+y], [125+x, 196+y], [135+x, 205+y]])
 
 def drawFlagL(x,y,s):
+    '''This function draws a flag at the bottom-left corner of the screen. The flag consists of a red triangle over a yellow pole.
+      The function takes three parameters: x and y are the coordinates where the flag will be drawn, and s is the scaling factor for
+        the size of the flag. This function uses the global screen variable, which should be defined before calling this function.'''
     x = x-660
     y = y-190
     #corner flag left
+    '''This function will draw the flag at corner left.'''
     pygame.draw.line(screen, BRIGHT_YELLOW, [660+x, 220+y], [665+x, 190+y], 3*s)
     pygame.draw.polygon(screen, RED, [[668+x, 190+y], [675+x, 196+y], [665+x, 205+y]])
 
 def drawStandsR(x,y,s):
+    '''This function draws the stands on the right side of the soccer field. It takes three parameters, x and y, which are the coordinates
+    of the top-left corner of the stands, and s which scales the size of the stands. The function first adjusts the coordinates of x and
+    y based on the dimensions of the screen. It then draws the red triangle representing the main body of the stands, and the white rectangle
+    representing the top of the stands.'''
     x = x-680
     y = y-100
-    #stands right
     pygame.draw.polygon(screen, RED, [[680+x, 220+y], [800+x, 340+y], [800+x, 290+y], [680+x, 180+y]])
     pygame.draw.polygon(screen, WHITE, [[680+x, 180+y], [800+x, 100+y], [800+x, 290+y]])
 
 def drawStandsL(x,y,s):
+    '''This function is similar to drawStandsR, but it draws the stands on the left side of the soccer field.'''
     x=x-0
     y=y-100
     pygame.draw.polygon(screen, RED, [[120+x, 220+y], [0+x, 340+y], [0+x, 290+y], [120+x, 180+y]])
     pygame.draw.polygon(screen, WHITE, [[120+x, 180+y], [0+x, 100+y], [0+x, 290+y]])
 
 def drawFence(x,y,length,height):
-    '''fence'''
+    '''This function draws a fence on the soccer field. It takes four parameters, x and y, which are the coordinates of the top-left corner of
+      the fence, length which is the length of the fence, and height which is the height of the fence. The function first loops through length
+    in increments of 30, drawing vertical fence posts at each interval. It then loops through length in increments of 3, drawing horizontal lines
+    to connect the vertical posts. Finally, it draws horizontal lines at intervals of 4 pixels from y to y + height to create the horizontal rails
+    of the fence.'''
     for x in range(5, length, 30):
         pygame.draw.polygon(screen, NIGHT_GRAY, [[x + 2, y], [x + 2, y + height], [x, y + height], [x, y]])
 
@@ -224,6 +248,10 @@ def drawFence(x,y,length,height):
 
 
 def drawField(x,y,s):
+    '''This function draws the soccer field. It takes three parameters, x and y, which are the coordinates of the top-left corner of the field,
+      and s which scales the size of the field. The function first adjusts the coordinates of y based on the dimensions of the screen. It then
+    draws the out-of-bounds lines and the lines that make up the left and right sides of the field. Next, it draws the safety circle, the 18 yard
+      line goal box, the arc at the top of the goal box, and the 6 yard line goal box.'''
     y=y-220
     #out of bounds lines
     pygame.draw.line(screen, WHITE, [0+x, 580+y], [800+x, 580+y], 5*s)
@@ -255,10 +283,15 @@ def drawField(x,y,s):
 cloud_color = RED
 
 def SetCloudColor(c):
+    '''This function sets the color of the clouds. It takes one parameter, c, which is a color in the form of a tuple of three integers
+    representing RGB values. The function sets the global variable cloud_color to the value of c.'''
     global cloud_color
     cloud_color = c
 
 def draw_cloud(x, y):
+    '''This function draws a cloud on the screen. It takes two parameters, x and y, which are the coordinates of the top-left corner of the cloud.
+
+The function uses the global variable cloud_color to set the color of the cloud. It then draws four ellipses and a rectangle to create the shape of the cloud.'''
     pygame.draw.ellipse(SEE_THROUGH, cloud_color, [x, y + 8, 10, 10])
     pygame.draw.ellipse(SEE_THROUGH, cloud_color, [x + 6, y + 4, 8, 8])
     pygame.draw.ellipse(SEE_THROUGH, cloud_color, [x + 10, y, 16, 16])
